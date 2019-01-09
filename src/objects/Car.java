@@ -89,15 +89,15 @@ public class Car {
 					this.accel=0;
 					this.speed=0;
 				}
-				else {
-					if(this.driveStyle==-1) 
-						this.timeToPay=12;
-					else if(this.driveStyle==0)
-						this.timeToPay=5;
-					else
-						this.timeToPay=2;
-				}
 			}
+		}
+		else {
+			if(this.driveStyle==-1) 
+				this.timeToPay=12;
+			else if(this.driveStyle==0)
+				this.timeToPay=5;
+			else
+				this.timeToPay=2;
 		}
 		
 		if(retard > deltaT) {

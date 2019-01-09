@@ -48,14 +48,14 @@ public class Controller {
 	public Map<Integer, Car> carGenerator(int nbreCar, String style) {
 		Map<Integer, Car> cars = new HashMap<>();
 		for(int i=0;i<nbreCar;i++)
-			cars.put(i, new Car(style, deltaT,i*3));
+			cars.put(i, new Car(style, deltaT,i*4));
 		return cars;
 	}
 	
 	public Map<Integer, Toll> tollGenerator(int nbreToll, String style, Double lenght) {
 		Map<Integer, Toll> tolls = new TreeMap<>();
 		for(int i=1;i<=nbreToll;i++)
-			tolls.put(i-1, new Toll((lenght/(i+1))*i,style));
+			tolls.put(i-1, new Toll((lenght/(nbreToll+1))*i,style));
 		return tolls;
 	}
 	
