@@ -1,7 +1,6 @@
 import java.io.IOException;
 
 import ctrl.Controller;
-import gui.MyFrame;
 
 public class Main {
 	

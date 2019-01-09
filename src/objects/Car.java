@@ -11,8 +11,9 @@ public class Car {
 	private int driveStyle;
 	private int visibility;
 	private double timeToPay;
+	private double retard;
 	
-	public Car(double pos, double speed, double accel, String driveStyle, double deltaT) {
+	public Car(double pos, double speed, double accel, String driveStyle, double deltaT, double i) {
 		this.position=pos;
 		this.speed=speed;
 		this.accel=accel;
@@ -37,10 +38,11 @@ public class Car {
 			this.driveStyle=0;
 			this.timeToPay=6/deltaT;
 		}
+		this.retard=i;
 	}
 
-	public Car(String style, double deltaT) {
-		this(0.0, 36.111, 0.0, style, deltaT);
+	public Car(String style, double deltaT, double i) {
+		this(0.0, 36.111, 0.0, style, deltaT,i);
 	}
 
 	public double getPos() {
@@ -79,19 +81,15 @@ public class Car {
 			this.speed=0;
 		
 		if(this.speed<=0.1) {
-			System.out.println("test");
 			for(int i=0; i<road.getToll().size();i++) {
 				if((Math.abs(road.getToll().get(i).getPos()-this.getPos())<5)
 						&& road.getToll().get(i).getStyle().equalsIgnoreCase("toll")
 						&& timeToPay>0) {
-					System.out.println("test if");
 					this.timeToPay--;
 					this.accel=0;
 					this.speed=0;
-					System.out.println("ttp:"+timeToPay);
 				}
 				else {
-					System.out.println("test else");
 					if(this.driveStyle==-1) 
 						this.timeToPay=12;
 					else if(this.driveStyle==0)
@@ -102,7 +100,17 @@ public class Car {
 			}
 		}
 		
-		this.position += (deltaT*(this.speed)); // ICI DEPLACER LA MODIF DE SPEED
+		if(retard > deltaT) {
+			retard-=deltaT;
+			this.speed=0;
+			this.accel=0;
+		}
+		else if(retard<=deltaT && retard>0) {
+			retard=0;
+			this.speed=36.111;
+			this.accel=0;
+		}
+		this.position += (deltaT*(this.speed));
 		this.speed += this.accel*deltaT;
 	}
 
@@ -122,8 +130,7 @@ public class Car {
 
 	private void adaptAccel(Sign sign) {
 		this.accel=(((sign.getSpeedLimit()*sign.getSpeedLimit()) - (this.speed*this.speed))
-							/ (2*(sign.getPos()-this.position) ) );// /1000 si milisec, ici /1 pour 1sec
-		System.out.println("sign:"+sign.getSpeedLimit()+" // speed:"+this.speed+" // posSign:"+sign.getPos()+" // ma pos:"+this.getPos()+" // accel"+this.accel);
+							/ (2*(sign.getPos()-this.position) ) );
 	}
 
 	public double getSpeed() {
@@ -131,6 +138,10 @@ public class Car {
 	}
 	public double getAccel() {
 		return accel;
+	}
+
+	public double getRetard() {
+		return retard;
 	}
 
 }

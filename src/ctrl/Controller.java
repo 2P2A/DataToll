@@ -48,8 +48,7 @@ public class Controller {
 	public Map<Integer, Car> carGenerator(int nbreCar, String style) {
 		Map<Integer, Car> cars = new HashMap<>();
 		for(int i=0;i<nbreCar;i++)
-			cars.put(i, new Car(style, deltaT));
-		System.out.println(""+cars);
+			cars.put(i, new Car(style, deltaT,i*3));
 		return cars;
 	}
 	
@@ -57,7 +56,6 @@ public class Controller {
 		Map<Integer, Toll> tolls = new TreeMap<>();
 		for(int i=1;i<=nbreToll;i++)
 			tolls.put(i-1, new Toll((lenght/(i+1))*i,style));
-		System.out.println(""+tolls.get(0).getSpeedLimit()+" - "+tolls.get(0).getPos());
 		return tolls;
 	}
 	
@@ -80,9 +78,6 @@ public class Controller {
 				j++;
 			}
 		}
-		/*for(int i = 0; i<8;i++)
-			System.out.println(""+signs.get(i)+" - "+signs.get(i).getPos()+" - "+signs.get(i).getSpeedLimit());
-		*/
 		return signs;
 	}
 }

@@ -10,13 +10,19 @@ public class Toll {
 		this.position=d;
 		if(style.equalsIgnoreCase("toll")) {
 			this.speedLimitation=0;
-			this.setStyle("toll");
+			this.style="toll";
 		}
 			
-		else if(style.equalsIgnoreCase("teletoll"))
+		else if(style.equalsIgnoreCase("teletoll")) {
 			this.speedLimitation=0;
-		else if(style.equalsIgnoreCase("fastteletoll"))
+			this.style="teletoll";
+		}
+			
+		else if(style.equalsIgnoreCase("fastteletoll")) {
 			this.speedLimitation=8.333;
+			this.style="fastteletoll";
+		}
+			
 	}
 
 	public Double getPos() {
