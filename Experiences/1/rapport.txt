@@ -1,0 +1,4 @@
+Soit une route de 1 km, un péage situé à 500 mettres et un conducteur au profil normal commençant à 0 mettres:
+- L'expérience dure 51,7 secondes avec un péage classique
+- L'expérience dure 51,2 secondes avec un télé-péage
+- L'expérience dure 43,4 secondes avec un télé-péage 30
