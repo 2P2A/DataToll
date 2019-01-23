@@ -93,11 +93,11 @@ public class Car {
 		}
 		else {
 			if(this.driveStyle==-1) 
-				this.timeToPay=12;
+				this.timeToPay=12/deltaT;
 			else if(this.driveStyle==0)
-				this.timeToPay=5;
+				this.timeToPay=6/deltaT;
 			else
-				this.timeToPay=2;
+				this.timeToPay=3/deltaT;
 		}
 		
 		if(retard > deltaT) {
