@@ -18,21 +18,21 @@ public class Car {
 		this.speed=speed;
 		this.accel=accel;
 		if(driveStyle.equals("cool")) {
-			this.maxAccel=10;
+			this.maxAccel=3;
 			this.maxSpeed=33.333;
 			this.visibility=150;
 			this.driveStyle=-1;
 			this.timeToPay=12/deltaT;
 		}
-		else if(driveStyle.equals("fred")) {
-			this.maxAccel=100;
+		else if(driveStyle.equals("fredericJallah")) {
+			this.maxAccel=12;
 			this.maxSpeed=55.556;
 			this.visibility=50;
 			this.driveStyle=1;
 			this.timeToPay=3/deltaT;
 		}
 		else {
-			this.maxAccel=20;
+			this.maxAccel=7;
 			this.maxSpeed=36.111;
 			this.visibility=100;
 			this.driveStyle=0;
@@ -67,8 +67,6 @@ public class Car {
 			}
 		}
 		
-		// ancienne pos modif speed ici
-		
 		
 		if(this.speed>this.maxSpeed) {
 			this.speed=this.maxSpeed;
@@ -96,7 +94,7 @@ public class Car {
 				this.timeToPay=12/deltaT;
 			else if(this.driveStyle==0)
 				this.timeToPay=6/deltaT;
-			else
+			else if(this.driveStyle==1)
 				this.timeToPay=3/deltaT;
 		}
 		
