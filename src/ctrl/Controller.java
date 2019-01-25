@@ -61,7 +61,7 @@ public class Controller {
 	
 	public TreeMap<Integer, Sign> signGenerator(Map<Integer, Toll> tolls) {
 		int signsPosDesc[] = {-500, -400, -300, -200, -100};
-		int signsPosAccl[] = {100,200,300};
+		int signsPosAccl[] = {50,100,200,300};
 		TreeMap<Integer, Sign> signs = new TreeMap<>();
 		int j=0;
 		for(int i=0;i<tolls.size();i++) {
@@ -71,7 +71,7 @@ public class Controller {
 				limit-=5.556;
 				j++;
 			}
-			limit = 25;
+			limit = 20;
 			for(int dist:signsPosAccl) {
 				signs.put(j, new Sign(limit, tolls.get(i).getPos()+dist));
 				limit+=5.556;

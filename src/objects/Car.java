@@ -89,6 +89,17 @@ public class Car {
 				}
 			}
 		}
+		else if(this.speed<=0.5 && driveStyle==1) {
+			for(int i=0; i<road.getToll().size();i++) {
+				if((Math.abs(road.getToll().get(i).getPos()-this.getPos())<5)
+						&& road.getToll().get(i).getStyle().equalsIgnoreCase("toll")
+						&& timeToPay>0) {
+					this.timeToPay--;
+					this.accel=0;
+					this.speed=0;
+				}
+			}
+		}
 		else {
 			if(this.driveStyle==-1) 
 				this.timeToPay=12/deltaT;
